@@ -1,9 +1,8 @@
 if __name__ == "__main__":
     n = int(input())
-    nums = []
+    nums_array = []
     for _ in range(n):
-        nums.append(int(input()))
-        
-    nums.sort()
-    for num in nums:
-        print(num)
+        nums_array.append(int(input()))
+
+    nums_array.sort()
+    print(*nums_array)
