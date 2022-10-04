@@ -1,21 +1,12 @@
-def DFS(x, num):
-    global min
-    if num > min:
-        return
-    if x == 1:
-        if num < min:
-            min = num
-    else:
-        if x % 3 == 0:
-            DFS(x // 3, num + 1)
-        DFS(x - 1, num + 1)
-        if x%2 == 0:
-            DFS(x // 2, num + 1)
-
-
 if __name__ == "__main__":
     n = int(input())
-    min = 2147000000
-    DFS(n, 0)
+    dp = [0] * (n+1)
 
-    print(min)
+    for i in range(2, n+1):
+        dp[i] = dp[i-1] + 1
+        if i%2 == 0:
+            dp[i] = min(dp[i//2] + 1, dp[i])
+        if i%3 == 0:
+            dp[i] = min(dp[i//3]+1, dp[i])
+    print(dp[n])
+    
